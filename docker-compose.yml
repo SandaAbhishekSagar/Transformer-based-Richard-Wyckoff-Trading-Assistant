@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  wyckoff-chatbot:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - CUDA_VISIBLE_DEVICES=0
+    volumes:
+      - ./assets:/app/assets
+      - ./logs:/app/logs
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
