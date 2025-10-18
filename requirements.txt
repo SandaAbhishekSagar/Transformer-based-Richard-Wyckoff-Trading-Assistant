@@ -7,9 +7,9 @@ itsdangerous==2.2.0
 click==8.1.8
 blinker==1.9.0
 
-# Data processing - Python 3.9 compatible versions
+# Data processing - compatible versions
 pandas==2.0.3
-numpy==1.26.4
+numpy==1.24.3
 yfinance==0.2.55
 
 # Machine Learning - CPU versions for Railway
@@ -20,13 +20,13 @@ transformers==4.30.2
 tokenizers==0.13.3
 safetensors==0.3.1
 
-# TensorFlow (CPU version) - Python 3.9 compatible
+# TensorFlow (CPU version) - compatible with numpy 1.24.3
 tensorflow==2.13.0
 tensorboard==2.13.0
 tensorboard-data-server==0.7.0
 tensorflow-io-gcs-filesystem==0.31.0
 
-# Visualization - Python 3.9 compatible
+# Visualization - compatible versions
 matplotlib==3.7.2
 contourpy==1.1.0
 cycler==0.11.0
@@ -94,7 +94,7 @@ Pygments==2.15.1
 markdown-it-py==3.0.0
 mdurl==0.1.2
 
-# TensorFlow dependencies - Python 3.9 compatible
+# TensorFlow dependencies - compatible versions
 h5py==3.9.0
 ml_dtypes==0.2.0
 namex==0.0.7
