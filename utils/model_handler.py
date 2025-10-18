@@ -198,7 +198,7 @@ class WyckoffModelHandler:
         self.data_path = data_path
         self.model = None
         self.tokenizer = None
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.device = "cpu"  # Railway doesn't support CUDA, use CPU
         logger.info(f"Using device: {self.device}")
     
     def _load_data_and_create_tokenizer(self):

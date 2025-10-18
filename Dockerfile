@@ -1,15 +1,17 @@
-# Use Python 3.9 with CUDA support for GPU acceleration
-FROM nvidia/cuda:11.8-devel-ubuntu20.04
+# Use Python 3.9 with Railway-compatible base image
+FROM python:3.9-slim
+
+# Set working directory
+WORKDIR /app
 
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
+ENV PIP_NO_CACHE_DIR=1
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-pip \
-    python3-dev \
     build-essential \
     libssl-dev \
     libffi-dev \
@@ -20,9 +22,6 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     curl \
     && rm -rf /var/lib/apt/lists/*
-
-# Create symbolic link for python
-RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # Copy requirements first for better caching
 COPY requirements.txt .
