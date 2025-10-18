@@ -49,11 +49,15 @@ certifi==2023.7.22
 charset-normalizer==3.2.0
 idna==3.4
 
-# Utilities
+# Date/time utilities
 python-dateutil==2.8.2
 pytz==2023.3
 six==1.16.0
+
+# Progress bars
 tqdm==4.65.0
+
+# Utilities
 wrapt==1.14.1
 typing_extensions==4.7.1
 
@@ -62,20 +66,22 @@ cryptography==41.0.4
 cffi==1.15.1
 pycparser==2.21
 
-# File handling
+# File system
 fsspec==2023.6.0
 filelock==3.12.2
+
+# Packaging
 packaging==23.1
 platformdirs==3.9.1
 appdirs==1.4.4
 
-# Math and scientific
+# Math libraries
 sympy==1.12
 mpmath==1.3.0
 opt_einsum==3.3.0
 optree==0.11.0
 
-# Network and async
+# gRPC and protobuf
 grpcio==1.56.0
 protobuf==4.23.4
 absl-py==1.4.0
@@ -88,24 +94,37 @@ frozendict==2.3.8
 # Database
 peewee==3.16.2
 
-# Development tools
+# Rich text
 rich==13.4.2
 Pygments==2.15.1
 markdown-it-py==3.0.0
 mdurl==0.1.2
 
-# TensorFlow dependencies - compatible versions
+# HDF5
 h5py==3.9.0
 ml_dtypes==0.2.0
 namex==0.0.7
+
+# Network
 networkx==3.1
 flatbuffers==23.5.26
 gast==0.4.0
 google-pasta==0.2.0
 libclang==16.0.6
+
+# Markdown
 Markdown==3.4.4
 PyYAML==6.0.1
 regex==2023.6.3
 astunparse==1.6.3
+
+# Trading
 multitasking==0.0.11
 colorama==0.4.6
+
+# Metadata
+importlib-metadata>=3.6
+tzdata>=2022.1
+
+# Production server
+gunicorn==22.0.0
