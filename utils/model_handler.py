@@ -247,6 +247,13 @@ class WyckoffModelHandler:
             if os.path.exists(self.model_path):
                 logger.info(f"Loading model from: {self.model_path}")
                 
+                # Check if file is corrupted (starts with PK indicates ZIP file)
+                with open(self.model_path, 'rb') as f:
+                    first_bytes = f.read(2)
+                    if first_bytes == b'PK':
+                        logger.error(f"Model file appears to be corrupted (ZIP file instead of PyTorch model)")
+                        return False
+                
                 # Initialize model with the same architecture used during training
                 self.model = Transformer(
                     vocab_size=self.VOCAB_SIZE,
@@ -278,7 +285,8 @@ class WyckoffModelHandler:
         """Generate a response to a Wyckoff-related question"""
         if not self.model or not self.tokenizer:
             if not self.load_model():
-                return None
+                logger.warning("Model loading failed, using fallback response")
+                return self.get_fallback_response(question)
                 
         try:
             logger.info(f"Generating response for: {question}")
@@ -320,7 +328,8 @@ class WyckoffModelHandler:
             
         except Exception as e:
             logger.error(f"Error generating response: {e}", exc_info=True)
-            return None
+            logger.warning("Using fallback response due to generation error")
+            return self.get_fallback_response(question)
                 
     def get_fallback_response(self, question=None):
         """Generate a fallback response when model is not available"""
